@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre la esencia de Ixtlán del Río, Nayarit. Explora su gastronomía, cultura, turismo y tradiciones en el corazón de México.">
+    <meta name="keywords" content="Ixtlán del Río, Nayarit, turismo, gastronomía, cultura, Los Toriles, birria, tejuino, pueblo mágico">
+    <meta name="author" content="Ixtlán del Río Tourism">
+    <title>Ixtlán del Río - Descubre la esencia de Nayarit</title>
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        :root {
+            --font-display: 'Bebas Neue', cursive; --font-body: 'Inter', sans-serif; --color-primary: #005a8b; --color-secondary: #e57200; --color-text: #211e1c; --color-text-light: #f7f7f7; --color-white: #fff; --color-bg-light: #f8f9fa;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--color-text); background-color: var(--color-bg-light); }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: var(--font-display); }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 9999px; font-family: var(--font-display); font-weight: bold; font-size: 19px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none !important; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+        .btn-primary { background-color: var(--color-secondary); color: var(--color-white); border: 2px solid var(--color-secondary); }
+        .btn-primary:hover { background-color: var(--color-white); color: var(--color-secondary); }
+        .btn-secondary { background-color: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .btn-secondary:hover { background-color: var(--color-primary); color: var(--color-white); }
+        .header { background-color: var(--color-white); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); }
+        .menu-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px 8px 16px; background-color: var(--color-white); border: 2px solid var(--color-primary); border-radius: 9999px; font-family: var(--font-display); font-size: 18px; color: var(--color-primary); }
+        .menu-toggle .menu-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background-color: var(--color-primary); border-radius: 50%; color: white; }
+        #mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-primary); z-index: 100; display: none; flex-direction: column; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; }
+        #mobile-menu-overlay.active { opacity: 1; pointer-events: all; }
+        #mobile-menu-overlay .nav-link { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-white); padding: 1rem; transition: color 0.3s ease; }
+        #mobile-menu-overlay .nav-link:hover { color: var(--color-secondary); }
+        #close-menu-btn-main { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: white; cursor: pointer; }
+        .hero-gradient { background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 50%); }
+        .text-shadow { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); }
+        .hero-title { font-size: 4rem; }
+        @media (min-width: 768px) { .hero-title { font-size: 6rem; } }
+        .section-title { font-size: 3.5rem; color: var(--color-primary); margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.25rem; color: #555; max-width: 700px; margin: 0 auto; }
+        .custom-card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .custom-card .card-content { flex-grow: 1; }
+        .custom-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+        .carousel-btn { background-color: rgba(255, 255, 255, 0.9); color: var(--color-primary); border-radius: 50%; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .carousel-btn:hover { background-color: white; }
+        .carousel-indicator { width: 12px; height: 12px; border-radius: 50%; background-color: #d1d5db; transition: background-color 0.3s ease; cursor: pointer; }
+        .carousel-indicator.active { background-color: var(--color-secondary); }
+        .filter-btn { padding: 10px 24px; border-radius: 9999px; font-family: var(--font-display); font-size: 18px; transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer; }
+        .filter-btn.active { background-color: var(--color-primary); color: white; }
+        .filter-btn:not(.active) { background-color: #e5e7eb; color: #374151; border-color: #e5e7eb; }
+        .filter-btn:not(.active):hover { background-color: var(--color-primary); color: white; }
+        .form-input { width: 100%; padding: 12px 16px; border: 2px solid #d1d5db; border-radius: 0.5rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .form-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0, 90, 19, 0.2); }
+        .footer { background-color: var(--color-primary); color: var(--color-text-light); }
+        .footer a { color: #d1d5db; }
+        .footer a:hover { color: var(--color-white); }
+        .footer .social-icon { transition: color 0.3s ease; }
+        .pricing-card { border: 2px solid #e5e7eb; border-radius: 0.75rem; padding: 2rem; display: flex; flex-direction: column; }
+        .pricing-card.featured { border-color: var(--color-primary); }
+        .pricing-card ul li { display: flex; align-items: center; margin-bottom: 0.75rem; }
+        .pricing-card ul li .fa-check-circle { color: #10b981; margin-right: 0.75rem; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 200; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content { background-color: white; border-radius: 0.75rem; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+    </style>
+</head>
+
+<body class="font-body">
+
+    <div id="gastronomy-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative"><img id="gastronomy-modal-img" src="" alt="Platillo" class="w-full h-64 object-cover rounded-t-lg"><button class="modal-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button></div>
+            <div class="p-8">
+                <h3 id="gastronomy-modal-title" class="text-4xl font-heading font-bold" style="color: var(--color-primary);"></h3>
+                <p id="gastronomy-modal-description" class="text-gray-600 mt-4 mb-6 leading-relaxed"></p>
+                <h4 class="text-2xl font-heading font-bold text-gray-800">¿Con qué se acompaña?</h4>
+                <p id="gastronomy-modal-pairings" class="text-gray-600 mt-2 mb-6"></p>
+                <h4 class="text-2xl font-heading font-bold text-gray-800">¿Dónde Probarlo?</h4>
+                <div id="gastronomy-modal-locations" class="mt-4 space-y-4"></div>
+            </div>
+        </div>
+    </div>
+    <div id="culture-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative"><img id="culture-modal-img" src="" alt="Tradición" class="w-full h-64 object-cover rounded-t-lg"><button class="modal-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button></div>
+            <div class="p-8">
+                <h3 id="culture-modal-title" class="text-4xl font-heading font-bold" style="color: var(--color-primary);"></h3>
+                <p id="culture-modal-description" class="text-gray-600 mt-4 mb-6 leading-relaxed"></p>
+                <div id="culture-modal-extra"></div>
+            </div>
+        </div>
+    </div>
+    <div id="novedades-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative"><img id="novedades-modal-img" src="" alt="Novedad" class="w-full h-64 object-cover rounded-t-lg"><button class="modal-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button></div>
+            <div class="p-8">
+                <p id="novedades-modal-date" class="text-sm text-gray-500 mb-2"></p>
+                <h3 id="novedades-modal-title" class="text-4xl font-heading font-bold" style="color: var(--color-primary);"></h3>
+                <div id="novedades-modal-content" class="text-gray-600 mt-4 mb-6 leading-relaxed"></div>
+                <div class="mt-6 pt-4 border-t">
+                    <a href="blog.html" class="btn btn-primary">Ver más noticias en el blog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Comentarios -->
+    <div id="comments-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative p-8">
+                <button class="modal-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                <h3 class="text-3xl font-heading font-bold mb-4" style="color: var(--color-primary);">¡Tu Voz es Importante!</h3>
+                <p class="text-gray-600 mb-6">Ayúdanos a mejorar compartiendo tus ideas, correcciones o sugerencias sobre Ixtlán del Río.</p>
+                
+                <form action="https://formspree.io/f/xqadgelg" method="POST" id="comments-form" class="space-y-4">
+                    <div>
+                        <label for="comment-email" class="block text-sm font-medium text-gray-700 mb-2">Tu correo electrónico:</label>
+                        <input type="email" id="comment-email" name="email" required class="form-input" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label for="comment-name" class="block text-sm font-medium text-gray-700 mb-2">Tu nombre (opcional):</label>
+                        <input type="text" id="comment-name" name="name" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label for="comment-message" class="block text-sm font-medium text-gray-700 mb-2">Tu mensaje:</label>
+                        <textarea id="comment-message" name="message" required rows="5" class="form-input" placeholder="Comparte tus ideas, sugerencias o correcciones..."></textarea>
+                    </div>
+                    <div class="flex gap-4">
+                        <button type="submit" class="btn btn-primary flex-1">Enviar Comentario</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('comments-modal-overlay')">Cancelar</button>
+                    </div>
+                </form>
+                <p id="comments-form-status" class="text-center mt-4"></p>
+            </div>
+        </div>
+    </div>
+    
+    <header class="header sticky top-0 z-50" role="banner">
+        <nav class="container mx-auto px-6 py-3" aria-label="Navegación principal">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center space-x-3">
+                    <img src="./images/logo.png" alt="Logo de Ixtlán del Río" class="h-12 w-auto">
+                    <div>
+                        <h1 class="text-xl font-heading font-bold" style="color: var(--color-primary);">Ixtlán del Río</h1>
+                        <p class="text-sm text-gray-600">Donde abunda la obsidiana</p>
+                    </div>
+                </a>
+                <ul class="hidden lg:flex items-center space-x-8">
+                    <li><a href="#gastronomia" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Gastronomía</a></li>
+                    <li><a href="#cultura" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Cultura</a></li>
+                    <li><a href="#turismo" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Turismo</a></li>
+                    <li><a href="#novedades" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Novedades</a></li>
+                    <li><a href="blog.html" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Blog</a></li>
+                    <li><a href="#anuncios" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Anuncios</a></li>
+                    <li><a href="#contacto" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Contacto</a></li>
+                </ul>
+                <div class="flex items-center space-x-4">
+                     <a href="#publicita" class="hidden lg:inline-block btn btn-primary">Publicita tu local</a>
+                    <button id="mobile-menu-btn" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <span class="button-text">Menú</span>
+                        <span class="menu-icon"><i class="fas fa-bars"></i></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu-overlay">
+        <button id="close-menu-btn-main" aria-label="Cerrar menú"><i class="fas fa-times"></i></button>
+        <ul class="flex flex-col items-center space-y-6 text-center">
+            <li><a href="#gastronomia" class="nav-link">Gastronomía</a></li>
+            <li><a href="#cultura" class="nav-link">Cultura</a></li>
+            <li><a href="#turismo" class="nav-link">Turismo</a></li>
+            <li><a href="#novedades" class="nav-link">Novedades</a></li>
+            <li><a href="blog.html" class="nav-link">Blog</a></li>
+            <li><a href="#anuncios" class="nav-link">Anuncios</a></li>
+            <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="#publicita" class="btn btn-primary mt-8">Publicita tu local</a></li>
+        </ul>
+    </div>
+
+    <main role="main">
+        <section class="relative h-screen flex items-center justify-center overflow-hidden" role="banner">
+            <div class="absolute inset-0 z-0"><img src="./images/paisajes/hero-sunset.jpg" alt="Vista panorámica de Ixtlán del Río al atardecer" class="w-full h-full object-cover"><div class="absolute inset-0 hero-gradient"></div></div>
+            <div class="relative z-10 text-center text-white container mx-auto px-6">
+                <h1 class="hero-title font-heading font-bold mb-6 text-shadow">Descubre la esencia de Ixtlán del Río</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-shadow">Donde la historia ancestral se encuentra con la tradición culinaria en el corazón de Nayarit</p>
+                <a href="#gastronomia" class="btn btn-primary text-lg px-8 py-4" aria-label="Explorar Ixtlán del Río">Explora ahora</a>
+            </div>
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"><i class="fas fa-chevron-down text-white text-2xl"></i></div>
+        </section>
+
+        <section id="gastronomia" class="py-20 bg-white" role="region" aria-labelledby="gastronomia-title">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="gastronomia-title" class="section-title">Gastronomía Tradicional</h2>
+                    <p class="section-subtitle">Descubre los sabores auténticos de Ixtlán del Río, donde cada platillo cuenta una historia de tradición y pasión culinaria.</p>
+                </div>
+                <div class="relative" role="region" aria-label="Carrusel de platillos típicos">
+                    <div id="gastronomia-carousel" class="overflow-hidden rounded-xl"><div class="flex transition-transform duration-500 ease-in-out" id="carousel-track"></div></div>
+                    <button id="prev-btn" class="carousel-btn absolute left-0 md:left-4 top-1/2 transform -translate-y-1/2 z-10" aria-label="Platillo anterior"><i class="fas fa-chevron-left text-xl"></i></button>
+                    <button id="next-btn" class="carousel-btn absolute right-0 md:right-4 top-1/2 transform -translate-y-1/2 z-10" aria-label="Siguiente platillo"><i class="fas fa-chevron-right text-xl"></i></button>
+                    <div id="carousel-indicators" class="flex justify-center mt-8 space-x-3" role="tablist"></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="cultura" class="py-20 bg-gray-50" role="region" aria-labelledby="cultura-title">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="cultura-title" class="section-title">Cultura y Tradiciones</h2>
+                    <p class="section-subtitle">Sumérgete en la riqueza cultural de Ixtlán del Río, donde las tradiciones ancestrales cobran vida en cada festividad y artesanía.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="custom-card">
+                        <div class="relative h-56 overflow-hidden"><img src="./images/cultura/dia-muertos.jpeg" alt="Celebración de la Fiesta Patronal" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Fiesta Patronal</h3>
+                            <p class="text-gray-600 mb-4">La celebración de Santiago Apóstol llena las calles de color y tradición con cabalgatas, música y danzas que honran nuestras raíces.</p>
+                            <button data-culture-id="fiesta" class="culture-btn font-bold text-orange-500 hover:text-orange-600 mt-auto text-left">Conocer más →</button>
+                        </div>
+                    </article>
+                    <article class="custom-card">
+                        <div class="relative h-56 overflow-hidden"><img src="./images/cultura/artesanias-1.jpg" alt="Danza del Venado" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Danza del Venado</h3>
+                            <p class="text-gray-600 mb-4">Una representación ancestral que conecta con nuestras raíces prehispánicas, donde el ritual y la naturaleza se encuentran.</p>
+                            <button data-culture-id="danza" class="culture-btn font-bold text-orange-500 hover:text-orange-600 mt-auto text-left">Conocer más →</button>
+                        </div>
+                    </article>
+                    <article class="custom-card">
+                        <div class="relative h-56 overflow-hidden"><img src="./images/cultura/artesanias-nayarit.jpg" alt="Artesanías Locales" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Artesanías Locales</h3>
+                            <p class="text-gray-600 mb-4">El arte del barro cobra vida en las manos expertas de nuestros artesanos, creando piezas únicas que reflejan nuestra identidad.</p>
+                            <button data-culture-id="artesanias" class="culture-btn font-bold text-orange-500 hover:text-orange-600 mt-auto text-left">Conocer más →</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="turismo" class="py-20 bg-white" role="region" aria-labelledby="turismo-title">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="turismo-title" class="section-title">Lugares Turísticos</h2>
+                    <p class="section-subtitle">Explora los tesoros arqueológicos, paisajes naturales y sitios históricos que hacen de Ixtlán del Río un destino único.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-4 mb-12" role="tablist" aria-label="Filtros de lugares turísticos">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="naturaleza">Naturaleza</button>
+                    <button class="filter-btn" data-filter="historia">Historia</button>
+                    <button class="filter-btn" data-filter="aventura">Aventura</button>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <article class="custom-card place-card" data-category="historia">
+                        <div class="relative h-56 overflow-hidden"><img src="./images/turismo/los-toriles-1.jpg" alt="Zona arqueológica Los Toriles" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-xl font-heading font-bold text-gray-800 mb-2">Zona Arqueológica Los Toriles</h3>
+                            <p class="text-gray-600 mb-4">Único sitio en Nayarit con uno de los pocos templos circulares de Mesoamérica.</p>
+                            <div class="flex items-center justify-between mt-auto pt-4 border-t">
+                                <span class="text-sm text-gray-500">📍 4.5 km del centro</span>
+                                <a href="https://maps.app.goo.gl/DdvGRySw4tsnCU437" target="_blank" rel="noopener noreferrer" class="btn btn-secondary text-sm py-2 px-4">Cómo llegar</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="custom-card place-card" data-category="naturaleza aventura">
+                        <div class="relative h-56 overflow-hidden"><img src="./images/paisajes/vista-aerea.jpg" alt="Vista desde el Cerrito del Cristo Rey" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-xl font-heading font-bold text-gray-800 mb-2">Cerrito del Cristo Rey</h3>
+                            <p class="text-gray-600 mb-4">Mirador que ofrece una vista panorámica inigualable de Ixtlán y sus alrededores.</p>
+                            <div class="flex items-center justify-between mt-auto pt-4 border-t">
+                                <span class="text-sm text-gray-500">📍 Centro</span>
+                                <a href="https://maps.app.goo.gl/eNP3neg2R4dqzPar6" target="_blank" rel="noopener noreferrer" class="btn btn-secondary text-sm py-2 px-4">Cómo llegar</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="custom-card place-card" data-category="naturaleza aventura">
+                         <div class="relative h-56 overflow-hidden"><img src="./images/paisajes/panoramica-hd.jpg" alt="Río Grande y paisajes naturales" class="w-full h-full object-cover"></div>
+                        <div class="p-6 card-content flex flex-col">
+                            <h3 class="text-xl font-heading font-bold text-gray-800 mb-2">Río Grande de Santiago</h3>
+                            <p class="text-gray-600 mb-4">Ideal para actividades acuáticas, pesca deportiva y relajación en familia.</p>
+                            <div class="flex items-center justify-between mt-auto pt-4 border-t">
+                                <span class="text-sm text-gray-500">📍 Afueras de la ciudad</span>
+                                <a href="https://maps.app.goo.gl/2ekccQ7qrUtggD5J9" target="_blank" rel="noopener noreferrer" class="btn btn-secondary text-sm py-2 px-4">Cómo llegar</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="novedades" class="py-20 bg-gray-50" role="region" aria-labelledby="novedades-title">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="novedades-title" class="section-title">Novedades</h2>
+                    <p class="section-subtitle">Mantente al día con las últimas noticias, eventos y acontecimientos de Ixtlán del Río.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="novedades-grid">
+                    <div class="flex justify-center items-center col-span-full">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500"></div>
+                        <p class="ml-4 text-gray-600">Cargando novedades...</p>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <a href="blog.html" class="btn btn-primary">Ver todas las noticias en el blog</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="anuncios" class="py-20 bg-white" role="region" aria-labelledby="anuncios-title">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 id="anuncios-title" class="section-title">Publicita tu Negocio</h2>
+                    <p class="section-subtitle">Únete a la comunidad empresarial de Ixtlán del Río y haz que tu negocio sea descubierto por locales y visitantes.</p>
+                </div>
+                <div id="publicita" class="grid md:grid-cols-2 gap-8 mb-16">
+                    <div class="pricing-card">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Registro Básico</h3>
+                            <div class="text-4xl font-heading font-bold text-gray-800 mb-2">Gratis</div>
+                            <p class="text-gray-600">Perfecto para comenzar</p>
+                        </div>
+                        <ul class="mb-8 flex-grow">
+                            <li><i class="fas fa-check-circle"></i>Listado en el directorio</li>
+                            <li><i class="fas fa-check-circle"></i>Información básica del negocio</li>
+                            <li><i class="fas fa-check-circle"></i>Categorización por tipo</li>
+                            <li><i class="fas fa-check-circle"></i>Datos de contacto</li>
+                        </ul>
+                        <a href="#business-form-container" class="btn btn-secondary w-full text-center">Registrarse Gratis</a>
+                    </div>
+                    <div class="pricing-card featured">
+                        <div class="text-center mb-6">
+                            <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold mb-4 inline-block">DESTACADO</span>
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Anuncio Premium</h3>
+                            <div class="text-4xl font-heading font-bold text-gray-800 mb-2">$500<span class="text-lg text-gray-600">/mes</span></div>
+                            <p class="text-gray-600">Máxima visibilidad</p>
+                        </div>
+                        <ul class="mb-8 flex-grow">
+                            <li><i class="fas fa-check-circle"></i>Todo lo del plan básico</li>
+                            <li><i class="fas fa-check-circle"></i>Posición destacada</li>
+                            <li><i class="fas fa-check-circle"></i>Imagen de portada</li>
+                            <li><i class="fas fa-check-circle"></i>Descripción extendida</li>
+                            <li><i class="fas fa-check-circle"></i>Enlaces a redes sociales</li>
+                            <li><i class="fas fa-check-circle"></i>Horarios de atención</li>
+                        </ul>
+                        <a href="mailto:info@ixtlandelrio.com?subject=Quiero mi Anuncio Destacado en ixtlandelrio.com" class="btn btn-primary mt-auto w-full text-center">Convertirme en Premium</a>
+                    </div>
+                </div>
+                <div id="business-form-container" class="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16 max-w-4xl mx-auto">
+                    <h3 class="text-3xl font-heading font-bold text-gray-800 mb-6 text-center">Formulario de Registro Básico</h3>
+                    <form id="business-form" action="https://formspree.io/f/xqadgelg" method="POST" class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="business-name" class="block text-sm font-medium text-gray-700 mb-2">Nombre del Negocio *</label>
+                            <input type="text" id="business-name" name="Nombre del Negocio" required class="form-input" placeholder="Ej: Restaurante La Tradición">
+                        </div>
+                        <div>
+                            <label for="business-category" class="block text-sm font-medium text-gray-700 mb-2">Categoría *</label>
+                            <select id="business-category" name="Categoría" required class="form-input">
+                                <option value="">Selecciona una categoría</option>
+                                <option value="restaurantes">Restaurantes</option>
+                                <option value="hospedaje">Hospedaje</option>
+                                <option value="artesanias">Artesanías</option>
+                                <option value="servicios">Servicios</option>
+                            </select>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="business-description" class="block text-sm font-medium text-gray-700 mb-2">Descripción Breve *</label>
+                            <textarea id="business-description" name="Descripción" required rows="4" class="form-input" placeholder="Describe tu negocio, servicios y lo que lo hace especial..."></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Tu Correo Electrónico (Para contacto)</label>
+                            <input type="email" id="email" name="Email de Contacto" class="form-input" placeholder="tucorreo@ejemplo.com">
+                        </div>
+                        <div class="md:col-span-2 text-center">
+                            <button type="submit" class="btn btn-primary px-8 py-3">Enviar Información</button>
+                        </div>
+                    </form>
+                    <p id="form-status" class="text-center mt-4"></p>
+                </div>
+                <div class="text-center mb-16">
+                     <h2 id="directorio-title" class="section-title">Directorio Local</h2>
+                </div>
+                 <div class="flex flex-wrap justify-center gap-4 mb-12" role="tablist" aria-label="Filtros de negocios">
+                    <button class="business-filter-btn filter-btn active" data-filter="all">Todos</button>
+                    <button class="business-filter-btn filter-btn" data-filter="restaurantes">Restaurantes</button>
+                    <button class="business-filter-btn filter-btn" data-filter="hospedaje">Hospedaje</button>
+                    <button class="business-filter-btn filter-btn" data-filter="artesanias">Artesanías</button>
+                    <button class="business-filter-btn filter-btn" data-filter="servicios">Servicios</button>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="business-directory">
+                    <article class="custom-card business-card md:col-span-2 lg:col-span-3 grid md:grid-cols-2 gap-0 overflow-hidden" data-category="servicios">
+                        <div class="relative h-56 md:h-full"><img src="./images/anuncios/vivero-tlalixpan.jpg" alt="Vivero Tlalixpan" class="w-full h-full object-cover"><span class="absolute top-2 right-2 bg-orange-500 text-white font-bold text-sm px-3 py-1 rounded-full shadow-lg font-heading">DESTACADO</span></div>
+                        <div class="p-6 card-content bg-blue-50">
+                            <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">Vivero Tlalixpan</h3>
+                            <span class="text-sm bg-green-100 text-green-800 px-2 py-1 rounded-full">Servicios</span>
+                            <p class="text-gray-600 my-4">Apasionados por ayudarte a cultivar. Encuentra las mejores plantas, árboles, suculentas y recibe consejos de expertos para que tu jardín prospere.</p>
+                            <div class="mt-auto pt-4 border-t space-y-1">
+                               <p class="text-sm text-gray-600"><i class="fas fa-map-marker-alt w-4 mr-1"></i> Zaragoza #18, Mexpan, Nayarit</p>
+                               <p class="text-sm text-gray-600"><i class="fas fa-phone w-4 mr-1"></i> 311 263 0287</p>
+                               <p class="text-sm text-gray-600"><i class="fas fa-globe w-4 mr-1"></i> <a href="http://viverotlalixpan.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">viverotlalixpan.com</a></p>
+                               <p class="text-sm text-gray-600"><i class="fab fa-facebook w-4 mr-1"></i> <a href="https://www.facebook.com/Tlalixpan/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">/Tlalixpan</a></p>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="custom-card business-card" data-category="restaurantes">
+                        <div class="p-6 card-content">
+                            <h3 class="text-xl font-heading font-bold text-gray-800 mb-2">Restaurante El Sabor</h3>
+                            <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">Restaurantes</span>
+                            <p class="text-gray-600 my-4">Especialistas en comida tradicional nayarita. Prueba nuestro famoso pollo a la picha y birria de chivo.</p>
+                            <div class="mt-auto pt-4 border-t">
+                               <p class="text-sm text-gray-500">📍 Calle Hidalgo #123, Centro</p>
+                               <p class="text-sm text-gray-500">📞 (324) 123-4567</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <footer id="contacto" class="footer py-16" role="contentinfo">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="./images/logo-white.png" alt="Logo de Ixtlán del Río en blanco" class="h-12 w-auto">
+                        <div>
+                            <h3 class="text-2xl font-heading font-bold text-white">Ixtlán del Río</h3>
+                            <p class="text-orange-300">Donde abunda la obsidiana</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">Descubre la magia de nuestro pueblo, donde la historia se encuentra con la hospitalidad nayarita en cada rincón, platillo y tradición.</p>
+                    <div class="mt-8 p-6 bg-gray-800/50 rounded-lg">
+                        <h4 class="font-heading text-xl font-bold mb-2 text-white">¡Tu Voz es Parte de Esta Comunidad!</h4>
+                        <p class="text-gray-300 mb-4">Tu opinión y recomendación es muy importante para nosotros. Ayúdanos a crecer y a mostrarte lo mejor de Ixtlán del Río. ¿Tienes alguna idea, corrección o sugerencia?</p>
+                        <button onclick="openModal('comments-modal-overlay')" class="font-bold text-orange-400 hover:text-orange-300 bg-transparent border-none cursor-pointer">Envíanos tus comentarios haciendo clic aquí →</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xl font-bold mb-4 text-white">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#gastronomia">Gastronomía</a></li>
+                        <li><a href="#cultura">Cultura</a></li>
+                        <li><a href="#turismo">Turismo</a></li>
+                        <li><a href="#novedades">Novedades</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#anuncios">Directorio</a></li>
+                    </ul>
+                </div>
+                <div>
+                     <h4 class="font-heading text-xl font-bold mb-4 text-white">Contacto</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt w-6"></i><span>Ixtlán del Río, Nayarit</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone w-6"></i><span>311 239 5184</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-6"></i><span>info@ixtlandelrio.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-sm text-gray-400 mb-4 md:mb-0">© 2025 Ixtlán del Río. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="YouTube"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // =================================================================
+            // INICIO: CONFIGURACIÓN DE CONTENTFUL
+            // =================================================================
+            const CONTENTFUL_SPACE_ID = 'u5uxopqpe40p';
+            const CONTENTFUL_ACCESS_TOKEN = 'MJLi2sF7Zls5pUReHpwhha-I9bVrBsPUAF93WIAWeLI';
+            const NOVEDADES_CONTENT_TYPE_ID = 'articulo'; // ✅ CORREGIDO: Cambiado de 'novedad' a 'articulo'
+            // =================================================================
+            // FIN: CONFIGURACIÓN DE CONTENTFUL
+            // =================================================================
+
+            const gastronomyData = [
+                { id: 'birria', title: 'Birria de Chivo', image: './images/gastronomia/birria-chivo.jpg', cta: 'Conocer más', description: 'La Birria de Chivo es el alma de la fiesta en Ixtlán. Un platillo robusto, de sabor profundo y carne tan suave que se desprende del hueso, cocida lentamente por horas en un adobo de chiles secos y especias.', pairings: 'Se sirve tradicionalmente en plato hondo con su propio consomé, acompañado de tortillas de maíz recién hechas, cebolla picada, cilantro fresco, limón y una salsa picante que realza sus sabores.', locations: [ { name: 'Birriería "El Sabor de mi Tierra"', address: 'Calle Hidalgo #123, Centro', note: 'Famosos por su receta familiar de más de 50 años.' }, { name: 'Restaurante "La Tradición"', address: 'Av. Principal #45, a un costado de la plaza', note: 'Ideal para disfrutar en un ambiente familiar.' } ] },
+                { id: 'mariscos', title: 'Mariscos Estilo Nayarit', image: './images/gastronomia/mariscos-nayarit.jpg', cta: 'Conocer más', description: 'Gracias a la cercanía con la costa, Ixtlán disfruta de mariscos frescos preparados con el inconfundible estilo nayarita. Desde un ceviche hasta un pescado zarandeado, el sabor a mar está siempre presente.', pairings: 'Se disfrutan con tostadas, galletas saladas, aguacate y una variedad de salsas picantes. Perfectos para acompañar con una cerveza fría o un agua fresca.', locations: [ { name: 'Mariscos "El Delfín"', address: 'Calle Morelos #210, Centro', note: 'Conocidos por su pescado zarandeado y sus aguachiles.' } ] },
+                { id: 'tejuino', title: 'Tejuino', image: './images/gastronomia/tejuino.webp', cta: 'Conocer más', description: 'Bebida ancestral y refrescante a base de maíz fermentado y piloncillo. Es la opción perfecta para calmar la sed en un día caluroso, con un sabor único, ligeramente agridulce y espeso.', pairings: 'Se sirve bien frío con abundante hielo, jugo de limón, sal y, opcionalmente, un toque de chile piquín o una bola de nieve de limón para una experiencia completa.', locations: [ { name: 'Tejuino "Don José"', address: 'Esquina de la Plaza Principal', note: 'El puesto más tradicional y reconocido por locales.' }, { name: 'Refresquería "La Única"', address: 'Mercado Municipal, Local #5', note: 'Ofrecen el tejuino con nieve de garrafa de la casa.' } ] },
+                { id: 'nieve', title: 'Nieve de Garrafa', image: './images/gastronomia/nieve-garrafa.jpg', cta: 'Conocer más', description: 'El postre artesanal por excelencia. A diferencia del helado industrial, la nieve de garrafa se elabora a mano en un recipiente de madera, resultando en una textura cristalina y sabores naturales e intensos.', pairings: 'Se disfruta sola en cono o vaso. Los sabores de frutas de temporada como mango, jamaica, o limón son los más populares. También es el complemento perfecto para el tejuino.', locations: [ { name: 'Nieves "Chelo"', address: 'Portal del Mercado', note: 'Más de 30 sabores diferentes, todos elaborados con fruta natural.' } ] }
+            ];
+            const cultureData = [
+                { id: 'fiesta', title: 'Fiesta Patronal', image: './images/cultura/dia-muertos.jpeg', description: 'Las fiestas patronales en honor a Santiago Apóstol son el corazón de la vida social y religiosa de Ixtlán. Durante la última semana de octubre, las calles se llenan de vida con peregrinaciones, música de banda, danzas tradicionales y la calidez de su gente. Es una celebración que une a familias y recibe a visitantes con los brazos abiertos.', extraContent: `<h4 class="text-2xl font-heading font-bold text-gray-800 mt-6 mb-2">Actividades Principales</h4><ul class="list-disc list-inside text-gray-600"><li>Cabalgata y desfile de charros.</li><li>Castillos de fuegos artificiales todas las noches.</li><li>Bailes populares en la plaza principal.</li><li>Puestos de comida con antojitos típicos.</li></ul>` },
+                { id: 'danza', title: 'Danza del Venado', image: './images/cultura/artesanias-1.jpg', description: 'Esta danza ritual de origen prehispánico es una representación dramática de la caza del venado, un animal sagrado para las culturas de la región. Los danzantes, con vestimentas y máscaras elaboradas, recrean la conexión espiritual entre el hombre, la naturaleza y el universo a través de movimientos ágiles y llenos de simbolismo.', extraContent: `<h4 class="text-2xl font-heading font-bold text-gray-800 mt-6 mb-2">Simbolismo</h4><ul class="list-disc list-inside text-gray-600"><li>Representa la lucha entre la vida y la muerte.</li><li>Honra al espíritu del venado y pide permiso a la naturaleza.</li><li>Se presenta en festividades importantes como un acto de preservación cultural.</li></ul>` },
+                { id: 'artesanias', title: 'Artesanías Locales', image: './images/cultura/artesanias-nayarit.jpg', description: 'Las manos de los artesanos de Ixtlán transforman el barro en hermosas piezas de alfarería. Utilizando técnicas ancestrales, crean desde utensilios de cocina hasta figuras decorativas que reflejan la identidad de la región. Cada pieza cuenta una historia de tradición familiar y amor por el oficio.', extraContent: `<h4 class="text-2xl font-heading font-bold text-gray-800 mt-6 mb-2">Artesanos Destacados</h4><div class="border-l-4 border-orange-500 pl-4 bg-orange-50 p-4 rounded"><p class="text-gray-700"><strong>Familia Hernández:</strong> Tres generaciones dedicadas a la alfarería tradicional. Puedes visitar su taller en la Calle Juárez #67.</p></div>` }
+            ];
+
+            function openModal(modalId, data, type) {
+                const modal = document.getElementById(modalId);
+                if (type === 'gastronomy') {
+                    document.getElementById('gastronomy-modal-img').src = data.image;
+                    document.getElementById('gastronomy-modal-title').textContent = data.title;
+                    document.getElementById('gastronomy-modal-description').textContent = data.description;
+                    document.getElementById('gastronomy-modal-pairings').textContent = data.pairings;
+                    const locationsContainer = document.getElementById('gastronomy-modal-locations');
+                    locationsContainer.innerHTML = '';
+                    data.locations.forEach(location => {
+                        const locationDiv = document.createElement('div');
+                        locationDiv.className = 'border-l-4 border-orange-500 pl-4 bg-orange-50 p-4 rounded';
+                        locationDiv.innerHTML = `<h5 class="font-bold text-gray-800">${location.name}</h5><p class="text-gray-600 text-sm">${location.address}</p><p class="text-gray-500 text-sm italic">${location.note}</p>`;
+                        locationsContainer.appendChild(locationDiv);
+                    });
+                } else if (type === 'culture') {
+                    document.getElementById('culture-modal-img').src = data.image;
+                    document.getElementById('culture-modal-title').textContent = data.title;
+                    document.getElementById('culture-modal-description').textContent = data.description;
+                    document.getElementById('culture-modal-extra').innerHTML = data.extraContent;
+                } else if (type === 'novedad') {
+                    document.getElementById('novedades-modal-img').src = `https:${data.imageUrl}`;
+                    document.getElementById('novedades-modal-title').textContent = data.titulo;
+                    document.getElementById('novedades-modal-date').textContent = new Date(data.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+                    document.getElementById('novedades-modal-content').innerHTML = data.contenido || data.resumen;
+                }
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.classList.remove('active');
+                document.body.classList.remove('overflow-hidden');
+                setTimeout(() => modal.style.display = 'none', 300);
+            }
+
+            document.querySelectorAll('.modal-close-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const modal = e.target.closest('.modal-overlay');
+                    closeModal(modal.id);
+                });
+            });
+
+            document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                overlay.addEventListener('click', (e) => {
+                    if (e.target === overlay) closeModal(overlay.id);
+                });
+            });
+
+            function initCarousel() {
+                const track = document.getElementById('carousel-track');
+                const indicatorsContainer = document.getElementById('carousel-indicators');
+                let currentIndex = 0;
+                track.innerHTML = '';
+                gastronomyData.forEach(dish => {
+                    const slide = document.createElement('div');
+                    slide.className = 'min-w-full relative';
+                    slide.innerHTML = `
+                        <div class="relative h-96 md:h-[500px] overflow-hidden">
+                            <img src="${dish.image}" alt="${dish.title}" class="w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                                <h3 class="text-4xl md:text-5xl font-heading font-bold mb-4 text-shadow">${dish.title}</h3>
+                                <p class="text-lg md:text-xl mb-6 max-w-2xl text-shadow">${dish.description.substring(0, 150)}...</p>
+                                <button data-dish-id="${dish.id}" class="gastronomy-btn btn btn-primary">${dish.cta}</button>
+                            </div>
+                        </div>
+                    `;
+                    track.appendChild(slide);
+                });
+                document.querySelectorAll('.gastronomy-btn').forEach(button => button.addEventListener('click', (e) => openModal('gastronomy-modal-overlay', gastronomyData.find(d => d.id === e.target.dataset.dishId), 'gastronomy')));
+                const slides = Array.from(track.children);
+                indicatorsContainer.innerHTML = '';
+                slides.forEach((_, index) => { const indicator = document.createElement('button'); indicator.className = 'carousel-indicator'; indicator.dataset.index = index; indicatorsContainer.appendChild(indicator); });
+                const indicators = Array.from(indicatorsContainer.children);
+                function updateCarousel() { track.style.transform = `translateX(-${currentIndex * 100}%)`; indicators.forEach((ind, i) => ind.classList.toggle('active', i === currentIndex)); }
+                document.getElementById('next-btn').addEventListener('click', () => { currentIndex = (currentIndex + 1) % slides.length; updateCarousel(); });
+                document.getElementById('prev-btn').addEventListener('click', () => { currentIndex = (currentIndex - 1 + slides.length) % slides.length; updateCarousel(); });
+                indicators.forEach(ind => ind.addEventListener('click', (e) => { currentIndex = parseInt(e.target.dataset.index); updateCarousel(); }));
+                updateCarousel();
+            }
+            document.querySelectorAll('.culture-btn').forEach(button => button.addEventListener('click', (e) => openModal('culture-modal-overlay', cultureData.find(d => d.id === e.target.dataset.cultureId), 'culture')));
+            
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const closeMenuBtn = document.getElementById('close-menu-btn-main');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const body = document.body;
+            const navLinks = mobileMenuOverlay.querySelectorAll('.nav-link, .btn');
+            function toggleMenu() {
+                const isActive = mobileMenuOverlay.style.display === 'flex';
+                mobileMenuBtn.setAttribute('aria-expanded', !isActive);
+                if (isActive) {
+                    mobileMenuOverlay.classList.remove('active');
+                    body.classList.remove('overflow-hidden');
+                    setTimeout(() => { mobileMenuOverlay.style.display = 'none'; }, 300);
+                } else {
+                    mobileMenuOverlay.style.display = 'flex';
+                    setTimeout(() => { mobileMenuOverlay.classList.add('active'); body.classList.add('overflow-hidden'); }, 10);
+                }
+            }
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+            navLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+            function setupFilter(buttonClass, cardClass) {
+                const filterButtons = document.querySelectorAll(buttonClass);
+                const cards = document.querySelectorAll(cardClass);
+                if (!filterButtons.length) return;
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        const filter = button.dataset.filter;
+                        cards.forEach(card => card.style.display = (filter === 'all' || (card.dataset.category && card.dataset.category.includes(filter))) ? 'flex' : 'none');
+                    });
+                });
+            }
+            setupFilter('.filter-btn', '.place-card');
+            setupFilter('.business-filter-btn', '.business-card');
+
+            var form = document.getElementById("business-form");
+            var status = document.getElementById("form-status");
+            async function handleSubmit(event) {
+                event.preventDefault();
+                var data = new FormData(event.target);
+                fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                }).then(response => {
+                    if (response.ok) {
+                        status.innerHTML = "¡Gracias! Tu información ha sido enviada."; status.style.color = "green"; form.reset();
+                    } else {
+                        response.json().then(data => {
+                            status.innerHTML = Object.hasOwn(data, 'errors') ? data["errors"].map(error => error["message"]).join(", ") : "Oops! Hubo un problema."; status.style.color = "red";
+                        });
+                    }
+                }).catch(error => { status.innerHTML = "Oops! Hubo un problema al enviar."; status.style.color = "red"; });
+            }
+            if (form) form.addEventListener("submit", handleSubmit);
+
+            // --- FORMULARIO DE COMENTARIOS ---
+            const commentsForm = document.getElementById("comments-form");
+            const commentsStatus = document.getElementById("comments-form-status");
+            
+            async function handleCommentsSubmit(event) {
+                event.preventDefault();
+                commentsStatus.innerHTML = "Enviando...";
+                commentsStatus.style.color = "#666";
+                
+                const data = new FormData(event.target);
+                
+                try {
+                    const response = await fetch(event.target.action, {
+                        method: commentsForm.method,
+                        body: data,
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    
+                    if (response.ok) {
+                        commentsStatus.innerHTML = "¡Gracias! Tu comentario ha sido enviado.";
+                        commentsStatus.style.color = "green";
+                        commentsForm.reset();
+                        setTimeout(() => {
+                            closeModal('comments-modal-overlay');
+                            commentsStatus.innerHTML = "";
+                        }, 2000);
+                    } else {
+                        const data = await response.json();
+                        commentsStatus.innerHTML = data.errors ? data.errors.map(error => error.message).join(", ") : "Oops! Hubo un problema.";
+                        commentsStatus.style.color = "red";
+                    }
+                } catch (error) {
+                    commentsStatus.innerHTML = "Oops! Hubo un problema al enviar.";
+                    commentsStatus.style.color = "red";
+                }
+            }
+            
+            if (commentsForm) commentsForm.addEventListener("submit", handleCommentsSubmit);
+
+            // Función global para abrir modal (necesaria para el botón onclick)
+            window.openModal = function(modalId) {
+                const modal = document.getElementById(modalId);
+                modal.style.display = 'flex';
+                setTimeout(() => modal.classList.add('active'), 10);
+                document.body.classList.add('overflow-hidden');
+            };
+
+            // --- NOVEDADES SCRIPT ---
+            async function fetchNovedades() {
+                const novedadesGrid = document.getElementById('novedades-grid');
+                if (!novedadesGrid) return;
+
+                try {
+                    const response = await fetch(`https://cdn.contentful.com/spaces/${CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${CONTENTFUL_ACCESS_TOKEN}&content_type=${NOVEDADES_CONTENT_TYPE_ID}&order=-fields.fecha&limit=6`);
+                    if (!response.ok) throw new Error('La respuesta de la red no fue correcta');
+                    
+                    const data = await response.json();
+                    const assets = new Map(data.includes.Asset.map(asset => [asset.sys.id, asset.fields]));
+                    
+                    // Función para procesar Rich Text de Contentful
+                    function processRichText(richTextContent) {
+                        if (!richTextContent || !richTextContent.content) return '';
+                        
+                        return richTextContent.content.map(node => {
+                            if (node.nodeType === 'paragraph') {
+                                return `<p>${node.content.map(textNode => textNode.value || '').join('')}</p>`;
+                            } else if (node.nodeType === 'heading-1') {
+                                return `<h1>${node.content.map(textNode => textNode.value || '').join('')}</h1>`;
+                            } else if (node.nodeType === 'heading-2') {
+                                return `<h2>${node.content.map(textNode => textNode.value || '').join('')}</h2>`;
+                            } else if (node.nodeType === 'unordered-list') {
+                                const listItems = node.content.map(listItem => 
+                                    `<li>${listItem.content.map(paragraph => 
+                                        paragraph.content.map(textNode => textNode.value || '').join('')
+                                    ).join('')}</li>`
+                                ).join('');
+                                return `<ul>${listItems}</ul>`;
+                            }
+                            return '';
+                        }).join('');
+                    }
+                    
+                    const novedades = data.items.map(item => ({ 
+                        id: item.sys.id, 
+                        titulo: item.fields.titulo,
+                        resumen: item.fields.resumen,
+                        contenido: typeof item.fields.contenido === 'string' ? item.fields.contenido : processRichText(item.fields.contenido),
+                        fecha: item.fields.fecha,
+                        imageUrl: assets.get(item.fields.imagenPrincipal.sys.id)?.file.url 
+                    }));
+
+                    novedadesGrid.innerHTML = ''; 
+
+                    if (novedades.length === 0) {
+                        novedadesGrid.innerHTML = '<p class="text-center col-span-full text-gray-600">No hay novedades por el momento. ¡Vuelve pronto!</p>';
+                        return;
+                    }
+
+                    novedades.forEach(novedad => {
+                        const article = document.createElement('article');
+                        article.className = 'custom-card';
+                        const formattedDate = new Date(novedad.fecha).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                        article.innerHTML = `
+                            <div class="relative h-56 overflow-hidden">
+                                <img src="https:${novedad.imageUrl}" alt="${novedad.titulo}" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6 card-content flex flex-col">
+                                <p class="text-sm text-gray-500 mb-2">${formattedDate}</p>
+                                <h3 class="text-2xl font-heading font-bold text-gray-800 mb-2">${novedad.titulo}</h3>
+                                <p class="text-gray-600 mb-4">${novedad.resumen}</p>
+                                <button data-novedad-id="${novedad.id}" class="novedad-btn font-bold text-orange-500 hover:text-orange-600 mt-auto text-left">Leer más →</button>
+                            </div>
+                        `;
+                        novedadesGrid.appendChild(article);
+                    });
+                    
+                    document.querySelectorAll('.novedad-btn').forEach(button => {
+                        button.addEventListener('click', (e) => {
+                            const novedadData = novedades.find(n => n.id === e.target.dataset.novedadId);
+                            openModal('novedades-modal-overlay', novedadData, 'novedad');
+                        });
+                    });
+
+                } catch (error) {
+                    console.error('Error al obtener las novedades de Contentful:', error);
+                    novedadesGrid.innerHTML = '<p class="text-center col-span-full text-red-600">No se pudieron cargar las novedades. Intenta de nuevo más tarde.</p>';
+                }
+            }
+
+            initCarousel();
+            fetchNovedades();
+        });
+    </script>
+</body>
+</html>

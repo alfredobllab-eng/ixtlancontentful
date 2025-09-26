@@ -1,6 +1,9 @@
+# Archivo de configuración para Netlify
+
 [build]
-  command = ""
-  publish = "."
+  # Directorio donde están tus funciones de Netlify
+  functions = "netlify/functions"
 
 [functions]
-  directory = "netlify/functions/"
+  # Asegurarnos de que Node.js se use para construir las funciones
+  node_bundler = "esbuild"

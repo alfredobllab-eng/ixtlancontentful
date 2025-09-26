@@ -170,7 +170,7 @@ async function fetchBlogPosts() {
         const data = await response.json();
         // ADAPTA LOS NOMBRES DE LOS CAMPOS a los de tu modelo de contenido del blog en Contentful
         const assets = new Map(data.includes.Asset.map(asset => [asset.sys.id, asset.fields]));
-        const posts = data.items.map(item => ({ id: item.sys.id, ...item.fields, imageUrl: assets.get(item.fields.imagenPost?.sys.id)?.file.url })); // ej: 'imagenPost'
+        const posts = data.items.map(item => ({ id: item.sys.id, ...item.fields, imageUrl: assets.get(item.fields.imagenPrincipal?.sys.id)?.file.url }));
 
         blogContainer.innerHTML = '';
 

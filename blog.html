@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Noticias, eventos y Novedades de Ixtlán del Río, Nayarit. Mantente al día con lo que sucede en nuestra comunidad.">
+    <title>Blog - Noticias de Ixtlán del Río</title>
+
+    <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+        <style>
+        :root {
+            --font-display: 'Bebas Neue', cursive;
+            --font-body: 'Inter', sans-serif;
+            --color-primary: #005a8b;
+            --color-secondary: #e57200;
+            --color-text: #211e1c;
+            --color-text-light: #f7f7f7;
+            --color-white: #fff;
+            --color-bg-light: #f8f9fa;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--color-text); background-color: var(--color-bg-light); }
+        h1, h2, h3, h4, h5, h6, .font-heading { font-family: var(--font-display); }
+        .btn { display: inline-block; padding: 12px 28px; border-radius: 9999px; font-family: var(--font-display); font-weight: bold; font-size: 19px; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none !important; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+        .btn-primary { background-color: var(--color-secondary); color: var(--color-white); border: 2px solid var(--color-secondary); }
+        .btn-primary:hover { background-color: var(--color-white); color: var(--color-secondary); }
+        .btn-secondary { background-color: transparent; color: var(--color-primary); border: 2px solid var(--color-primary); }
+        .btn-secondary:hover { background-color: var(--color-primary); color: var(--color-white); }
+        .header { background-color: var(--color-white); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1); }
+        .menu-toggle { display: inline-flex; align-items: center; gap: 8px; padding: 8px 10px 8px 16px; background-color: var(--color-white); border: 2px solid var(--color-primary); border-radius: 9999px; font-family: var(--font-display); font-size: 18px; color: var(--color-primary); }
+        .menu-toggle .menu-icon { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; background-color: var(--color-primary); border-radius: 50%; color: white; }
+        #mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-primary); z-index: 100; display: flex; flex-direction: column; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        #mobile-menu-overlay.active { opacity: 1; pointer-events: all; }
+        #mobile-menu-overlay .nav-link { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-white); padding: 1rem; transition: color 0.3s ease; }
+        #mobile-menu-overlay .nav-link:hover { color: var(--color-secondary); }
+        #close-menu-btn { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: white; cursor: pointer; }
+        .section-title { font-size: 3.5rem; color: var(--color-primary); margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.25rem; color: #555; max-width: 700px; margin: 0 auto; }
+        .custom-card { background-color: white; border-radius: 0.75rem; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.05); overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; flex-direction: column; }
+        .custom-card .card-content { flex-grow: 1; }
+        .custom-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); }
+        .footer { background-color: var(--color-primary); color: var(--color-text-light); }
+        .footer a { color: #d1d5db; }
+        .footer a:hover { color: var(--color-white); }
+        .footer .social-icon { transition: color 0.3s ease; }
+        .form-input { width: 100%; padding: 12px 16px; border: 2px solid #d1d5db; border-radius: 0.5rem; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+        .form-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(0, 90, 19, 0.2); }
+        
+        /* Modal styles */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 200; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; padding: 1rem; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .modal-content { background-color: white; border-radius: 0.75rem; width: 100%; max-width: 800px; max-height: 90vh; overflow-y: auto; transform: scale(0.95); transition: transform 0.3s ease; }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-close-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(0,0,0,0.5); color: white; border-radius: 50%; width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+        
+        /* Newsletter styles */
+        .newsletter-section { background: linear-gradient(135deg, var(--color-primary) 0%, #004a73 100%); }
+        
+        /* Mailchimp form styles */
+        #mc_embed_signup { background: transparent !important; width: 100% !important; }
+        #mc_embed_signup form { margin: 0 !important; }
+        #mc_embed_signup .mc-field-group { margin-bottom: 0 !important; }
+        #mc_embed_signup input[type="email"] { 
+            width: 100% !important; 
+            padding: 12px 16px !important; 
+            border: 2px solid rgba(255,255,255,0.3) !important; 
+            border-radius: 0.5rem !important; 
+            background: rgba(255,255,255,0.1) !important; 
+            color: white !important; 
+            font-size: 16px !important;
+        }
+        #mc_embed_signup input[type="email"]::placeholder { color: rgba(255,255,255,0.7) !important; }
+        #mc_embed_signup input[type="email"]:focus { 
+            border-color: var(--color-secondary) !important; 
+            background: rgba(255,255,255,0.2) !important; 
+            outline: none !important;
+        }
+        #mc_embed_signup .button { 
+            background-color: white !important; 
+            color: var(--color-primary) !important; 
+            border: none !important; 
+            padding: 12px 28px !important; 
+            border-radius: 9999px !important; 
+            font-family: var(--font-display) !important; 
+            font-weight: bold !important; 
+            font-size: 16px !important; 
+            text-transform: uppercase !important; 
+            cursor: pointer !important; 
+            transition: all 0.3s ease !important;
+        }
+        #mc_embed_signup .button:hover { 
+            background-color: var(--color-secondary) !important; 
+            color: white !important; 
+        }
+        #mc_embed_signup .clear { margin: 0 !important; }
+        #mce-responses { margin-top: 1rem !important; }
+        #mce-responses .response { 
+            color: white !important; 
+            background: rgba(255,255,255,0.1) !important; 
+            padding: 0.5rem 1rem !important; 
+            border-radius: 0.5rem !important; 
+            margin: 0.5rem 0 !important;
+        }
+    </style>
+</head>
+<body class="font-body">
+
+    <!-- Modal para artículos completos -->
+    <div id="article-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative">
+                <img id="article-modal-img" src="" alt="Artículo" class="w-full h-64 object-cover rounded-t-lg">
+                <button class="modal-close-btn" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-8">
+                <p id="article-modal-date" class="text-sm text-gray-500 mb-2"></p>
+                <h3 id="article-modal-title" class="text-4xl font-heading font-bold" style="color: var(--color-primary);"></h3>
+                <div id="article-modal-content" class="text-gray-600 mt-4 mb-6 leading-relaxed"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Comentarios -->
+    <div id="comments-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <div class="relative p-8">
+                <button class="modal-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+                <h3 class="text-3xl font-heading font-bold mb-4" style="color: var(--color-primary);">¡Tu Voz es Importante!</h3>
+                <p class="text-gray-600 mb-6">Ayúdanos a mejorar compartiendo tus ideas, correcciones o sugerencias sobre Ixtlán del Río.</p>
+                
+                <form action="https://formspree.io/f/xqadgelg" method="POST" id="comments-form" class="space-y-4">
+                    <div>
+                        <label for="comment-email" class="block text-sm font-medium text-gray-700 mb-2">Tu correo electrónico:</label>
+                        <input type="email" id="comment-email" name="email" required class="form-input" placeholder="tucorreo@ejemplo.com">
+                    </div>
+                    <div>
+                        <label for="comment-name" class="block text-sm font-medium text-gray-700 mb-2">Tu nombre (opcional):</label>
+                        <input type="text" id="comment-name" name="name" class="form-input" placeholder="Tu nombre">
+                    </div>
+                    <div>
+                        <label for="comment-message" class="block text-sm font-medium text-gray-700 mb-2">Tu mensaje:</label>
+                        <textarea id="comment-message" name="message" required rows="5" class="form-input" placeholder="Comparte tus ideas, sugerencias o correcciones..."></textarea>
+                    </div>
+                    <div class="flex gap-4">
+                        <button type="submit" class="btn btn-primary flex-1">Enviar Comentario</button>
+                        <button type="button" class="btn btn-secondary" onclick="closeModal('comments-modal-overlay')">Cancelar</button>
+                    </div>
+                </form>
+                <p id="comments-form-status" class="text-center mt-4"></p>
+            </div>
+        </div>
+    </div>
+
+    <header class="header sticky top-0 z-50" role="banner">
+        <nav class="container mx-auto px-6 py-3" aria-label="Navegación principal">
+            <div class="flex items-center justify-between">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="./images/logo.png" alt="Logo de Ixtlán del Río" class="h-12 w-auto">
+                    <div><h1 class="text-xl font-heading font-bold" style="color: var(--color-primary);">Ixtlán del Río</h1><p class="text-sm text-gray-600">Donde abunda la obsidiana</p></div>
+                </a>
+                <ul class="hidden lg:flex items-center space-x-8">
+                    <li><a href="index.html#gastronomia" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Gastronomía</a></li>
+                    <li><a href="index.html#cultura" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Cultura</a></li>
+                    <li><a href="index.html#turismo" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Turismo</a></li>
+                    <li><a href="blog.html" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Noticias</a></li>
+                    <li><a href="index.html#anuncios" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Anuncios</a></li>
+                    <li><a href="index.html#contacto" class="text-gray-700 hover:text-orange-500 transition-colors font-semibold">Contacto</a></li>
+                </ul>
+                <div class="flex items-center space-x-4">
+                     <a href="index.html#publicita" class="hidden lg:inline-block btn btn-primary">Publicita tu local</a>
+                    <button id="mobile-menu-btn" class="menu-toggle" aria-label="Abrir menú de navegación" aria-expanded="false"><span class="button-text">Menú</span><span class="menu-icon"><i class="fas fa-bars"></i></span></button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div id="mobile-menu-overlay" class="hidden">
+        <button id="close-menu-btn" aria-label="Cerrar menú"><i class="fas fa-times"></i></button>
+        <ul class="flex flex-col items-center space-y-6 text-center">
+            <li><a href="index.html#gastronomia" class="nav-link">Gastronomía</a></li>
+            <li><a href="index.html#cultura" class="nav-link">Cultura</a></li>
+            <li><a href="index.html#turismo" class="nav-link">Turismo</a></li>
+            <li><a href="blog.html" class="nav-link">Noticias</a></li>
+            <li><a href="index.html#anuncios" class="nav-link">Anuncios</a></li>
+            <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+            <li><a href="index.html#publicita" class="btn btn-primary mt-8">Publicita tu local</a></li>
+        </ul>
+    </div>
+
+    <main role="main">
+        <section class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16 pt-12">
+                    <h1 class="section-title">Blog de Ixtlán del Río</h1>
+                    <p class="section-subtitle">Todas nuestras noticias, historias y eventos. El corazón de nuestra comunidad en un solo lugar.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-posts-container">
+                    <p class="text-center col-span-3 text-gray-500">Cargando todas las noticias...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Newsletter con Mailchimp CONFIGURADO -->
+        <section class="newsletter-section py-16">
+            <div class="container mx-auto px-6">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h2 class="text-4xl font-heading font-bold text-white mb-4">¡No te pierdas nada!</h2>
+                    <p class="text-xl text-gray-200 mb-8">Suscríbete a nuestro boletín y recibe las últimas noticias, eventos y novedades de Ixtlán del Río directamente en tu correo.</p>
+                    
+                    <!-- Formulario de Mailchimp COMPLETAMENTE CONFIGURADO -->
+                    <div id="mc_embed_signup" class="max-w-md mx-auto">
+                        <form action="https://gmail.us5.list-manage.com/subscribe/post?u=7fea5ed07348bc42666c82be1&amp;id=f5e941c7dd&amp;f_id=00e3c3e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                            <div id="mc_embed_signup_scroll" class="flex flex-col sm:flex-row gap-4">
+                                <div class="mc-field-group flex-grow">
+                                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Tu correo electrónico" required>
+                                </div>
+                                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                    <input type="text" name="b_7fea5ed07348bc42666c82be1_f5e941c7dd" tabindex="-1" value="">
+                                </div>
+                                <div class="clear">
+                                    <input type="submit" value="Suscribirme" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                </div>
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <p class="text-sm text-gray-300 mt-4">
+                        <i class="fas fa-shield-alt mr-2"></i>
+                        Respetamos tu privacidad. Puedes darte de baja en cualquier momento.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contacto" class="footer py-16" role="contentinfo">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="./images/logo-white.png" alt="Logo de Ixtlán del Río en blanco" class="h-12 w-auto">
+                        <div>
+                            <h3 class="text-2xl font-heading font-bold text-white">Ixtlán del Río</h3>
+                            <p class="text-orange-300">Donde abunda la obsidiana</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">Descubre la magia de nuestro pueblo, donde la historia se encuentra con la hospitalidad nayarita en cada rincón, platillo y tradición.</p>
+                    <div class="mt-8 p-6 bg-gray-800/50 rounded-lg">
+                        <h4 class="font-heading text-xl font-bold mb-2 text-white">¡Tu Voz es Parte de Esta Comunidad!</h4>
+                        <p class="text-gray-300 mb-4">Tu opinión y recomendación es muy importante para nosotros. Ayúdanos a crecer y a mostrarte lo mejor de Ixtlán del Río. ¿Tienes alguna idea, corrección o sugerencia?</p>
+                        <button onclick="openModal('comments-modal-overlay')" class="font-bold text-orange-400 hover:text-orange-300 bg-transparent border-none cursor-pointer">Envíanos tus comentarios haciendo clic aquí →</button>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-heading text-xl font-bold mb-4 text-white">Enlaces Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#gastronomia">Gastronomía</a></li>
+                        <li><a href="index.html#cultura">Cultura</a></li>
+                        <li><a href="index.html#turismo">Turismo</a></li>
+                        <li><a href="blog.html">Noticias</a></li>
+                        <li><a href="index.html#anuncios">Directorio</a></li>
+                    </ul>
+                </div>
+                <div>
+                     <h4 class="font-heading text-xl font-bold mb-4 text-white">Contacto</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt w-6"></i><span>Ixtlán del Río, Nayarit</span></li>
+                        <li class="flex items-center"><i class="fas fa-phone w-6"></i><span>311 239 5184</span></li>
+                        <li class="flex items-center"><i class="fas fa-envelope w-6"></i><span>info@ixtlandelrio.com</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+                <p class="text-sm text-gray-400 mb-4 md:mb-0">© 2025 Ixtlán del Río. Todos los derechos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="Facebook"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white social-icon" aria-label="YouTube"><i class="fab fa-youtube text-xl"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de validación de Mailchimp -->
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+
+
+   <script src="script.js"></script>
+</body>
+</html>
+
